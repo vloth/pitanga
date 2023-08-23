@@ -1,0 +1,13 @@
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.nrepl-port
+.hgignore
+.hg/
+.cpcache/
+.cache
+.portal/vs-dode.edn
+.calva/output-window/
+.lsp/sqlite*.db
+.DS_Store

@@ -1,0 +1,13 @@
+{:paths
+ ["src"]
+
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.3"}
+  scad-clj/scad-clj   {:mvn/version "0.5.3"}}
+
+ :aliases
+ {:nrepl {:extra-deps {cider/cider-nrepl {:mvn/version "0.30.0"}}
+          :main-opts ["-m"
+                      "nrepl.cmdline"
+                      "--middleware" 
+                      "[cider.nrepl/cider-middleware]"]}}}

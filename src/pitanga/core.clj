@@ -1,13 +1,8 @@
 (ns core
   (:require [pitanga.scad :refer [render]]
+            [pitanga.vars :refer [facets-number spacing-factor support-radius
+                                  trackball-radius z-position-deg]]
             [scad-clj.model :as m]))
-
-(def facets-number 100)
-
-(def trackball-radius 17)
-(def support-radius 2)
-(def spacing-factor -0.01)
-(def z-position-deg -30)
 
 (defn support-location
   [angle]

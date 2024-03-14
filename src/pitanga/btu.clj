@@ -25,7 +25,6 @@
 (defn body
   []
   (m/difference
-   ;; (m/extrude-linear {:height (- L L1 H)} (m/circle (/ D2 2)))
    (m/translate [0 0 (/ (- (- L L1 H)) 2)] (m/call "ScrewThread" 6 (- L L1 H)))
    (m/translate [0 0 (- (+ (/ (- (- L L1 H) t) 2) (/ inner-tol 2)))] (mkey))))
 

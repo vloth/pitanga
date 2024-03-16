@@ -40,6 +40,11 @@
                 (body))
    (m/sphere support-radius)))
 
+(defn btu
+  []
+  (m/use "lib/threads-scad/threads.scad")
+  (model))
+
 (render [(m/fn! facets-number)
          (m/use "lib/threads-scad/threads.scad")
          (model)])

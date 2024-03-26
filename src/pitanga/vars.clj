@@ -4,5 +4,5 @@
 
 (def trackball-radius (/ 34 2))
 (def support-radius (/ 3.18 2))
-(def spacing-factor -0.06805)
+(def spacing-factor -0.2955)
 (def z-position-deg -30)

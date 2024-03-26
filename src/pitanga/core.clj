@@ -1,5 +1,6 @@
 (ns core
-  (:require [pitanga.scad :refer [render]]
+  (:require [pitanga.btu :refer [btu]]
+            [pitanga.scad :refer [render]]
             [pitanga.vars :refer [facets-number spacing-factor support-radius
                                   trackball-radius z-position-deg]]
             [scad-clj.model :as m]))
@@ -11,9 +12,12 @@
    (* (Math/sin (m/deg->rad z-position-deg)) trackball-radius)])
 
 (defn support-spheres []
-  (->> [0 120 240]
-       (map #(m/translate (support-location %)
-                          (m/sphere support-radius)))))
+  (map
+   (fn [angle]
+     (m/translate
+      (support-location angle)
+      (m/rotate [0 (m/deg->rad -60) (m/deg->rad angle)] (btu))))
+   [0 120 240]))
 
 (defn model []
   (m/union
@@ -21,4 +25,5 @@
    (support-spheres)))
 
 (render [(m/fn! facets-number)
+         (m/use "lib/threads-scad/threads.scad")
          (model)])

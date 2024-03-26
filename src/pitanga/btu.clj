@@ -13,23 +13,19 @@
     (def inner-tol 0.2)
     (def -cbtuh (- support-radius L1 H)))
 
-(defn countersunk
-  []
+(defn countersunk []
   (m/extrude-rotate {:angle 360}
                     (m/polygon [[0 0] [(/ D2 2) 0] [(/ D 2) H] [0 H]])))
 
-(defn mkey
-  []
+(defn mkey []
   (m/extrude-linear {:height (+ t inner-tol)} (m/with-fn 6 (m/circle (/ S 2)))))
 
-(defn body
-  []
+(defn body []
   (m/difference
    (m/translate [0 0 (/ (- (- L L1 H)) 2)] (m/call "ScrewThread" 6 (- L L1 H)))
    (m/translate [0 0 (- (+ (/ (- (- L L1 H) t) 2) (/ inner-tol 2)))] (mkey))))
 
-(defn model
-  []
+(defn btu []
   (m/union
    (m/translate [0 0 -cbtuh] (countersunk))
    (m/translate [0 0
@@ -40,11 +36,6 @@
                 (body))
    (m/sphere support-radius)))
 
-(defn btu
-  []
-  (m/use "lib/threads-scad/threads.scad")
-  (model))
-
 (render [(m/fn! facets-number)
          (m/use "lib/threads-scad/threads.scad")
-         (model)])
+         (btu)])

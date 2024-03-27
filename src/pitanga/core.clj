@@ -1,5 +1,5 @@
 (ns core
-  (:require [pitanga.btu :refer [btu]]
+  (:require [pitanga.components.btu-support :refer [btu-support]]
             [pitanga.scad :refer [render]]
             [pitanga.vars :refer [facets-number spacing-factor support-radius
                                   trackball-radius z-position-deg]]
@@ -16,7 +16,7 @@
    (fn [angle]
      (m/translate
       (support-location angle)
-      (m/rotate [0 (m/deg->rad -60) (m/deg->rad angle)] (btu))))
+      (m/rotate [0 (m/deg->rad -60) (m/deg->rad angle)] (btu-support))))
    [0 120 240]))
 
 (defn model []
